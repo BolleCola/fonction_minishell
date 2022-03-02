@@ -19,16 +19,16 @@ all : make
 make : $(PNTC)
 	@$(MAKE) -C ./libft
 	@$(CC) $(CFLAG) -o $(NAME) $(PNTC) ./libft/libft.a
-	@echo "Compilation : $(Green)OK$(NC)"
+	@echo "[$(Green)TEST$(NC)]Compilation : $(Green)OK$(NC)"
 	
 clean :
 	@$(MAKE) -C ./libft clean
-	@echo "Clean : $(Green)OK$(NC)"
+	@echo "[$(Green)TEST$(NC)]Clean : $(Green)OK$(NC)"
 
 fclean : clean
 	@$(MAKE) -C ./libft fclean
 	@$(RM) $(NAME)
-	@echo "Fclean : $(Green)OK$(NC)"
+	@echo "[$(Green)TEST$(NC)]Fclean : $(Green)OK$(NC)"
 
 re : clean fclean all
 
