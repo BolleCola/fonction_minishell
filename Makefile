@@ -8,9 +8,7 @@ CC = gcc
 
 RM = rm -f
 
-PNTC = 
-
-PNTO = $(PNTC:.c=.o)
+PNTC = echo.c
 
 Green = \033[0;32m
 
@@ -19,20 +17,17 @@ NC = \033[0m
 all : make
 
 make : $(PNTC)
-	$(MAKE) -C ./libft make
-	@$(CC) $(CFLAG) -c $(PNTC) ./libft/libft.a
+	@$(MAKE) -C ./libft
+	@$(CC) $(CFLAG) -o $(NAME) $(PNTC) ./libft/libft.a
 	@echo "Compilation : $(Green)OK$(NC)"
-	@ar $(ARFLAGS) $(NAME) $(PNTO)
-	@echo "creation des points 'O' : $(Green)OK$(NC)"
-
+	
 clean :
-	$(MAKE) -C ./libft clean
-	@/bin/$(RM) $(PNTO)
+	@$(MAKE) -C ./libft clean
 	@echo "Clean : $(Green)OK$(NC)"
 
 fclean : clean
-	$(MAKE) -C ./libft fclean
-	@/bin/$(RM) $(NAME)
+	@$(MAKE) -C ./libft fclean
+	@$(RM) $(NAME)
 	@echo "Fclean : $(Green)OK$(NC)"
 
 re : clean fclean all

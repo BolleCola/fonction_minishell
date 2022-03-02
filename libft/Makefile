@@ -14,23 +14,25 @@ PNTO = $(PNTC:.c=.o)
 
 Green = \033[0;32m
 
+ORANGE	= \033[0;35m
+
 NC = \033[0m
 
 all : make
 
 make : $(PNTC)
 	@$(CC) $(CFLAG) -c $(PNTC)
-	@echo "Compilation : $(Green)OK$(NC)"
+	@echo "[$(ORANGE)libft$(NC)] Compilation : $(Green)OK$(NC)"
 	@ar $(ARFLAGS) $(NAME) $(PNTO)
-	@echo "creation des points 'O' : $(Green)OK$(NC)"
+	@echo "[$(ORANGE)libft$(NC)] creation des points *O : $(Green)OK$(NC)"
 
 clean :
 	@/bin/$(RM) $(PNTO)
-	@echo "Clean : $(Green)OK$(NC)"
+	@echo "[$(ORANGE)libft$(NC)] Clean : $(Green)OK$(NC)"
 
 fclean : clean
 	@/bin/$(RM) $(NAME)
-	@echo "Fclean : $(Green)OK$(NC)"
+	@echo "[$(ORANGE)libft$(NC)] Fclean : $(Green)OK$(NC)"
 
 re : clean fclean all
 
