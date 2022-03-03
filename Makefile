@@ -8,7 +8,7 @@ CC = gcc
 
 RM = rm -f
 
-PNTC = echo.c
+PNTC = env.c
 
 Green = \033[0;32m
 
