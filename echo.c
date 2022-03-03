@@ -27,8 +27,10 @@ void	ft_pipe(char **str, int i)
 {
 	int	j;
 	int	pi;
+	int	bi;
 
 	j = 0;
+	bi = i;
 	pi = isp(str, i, 0);
 	while (str[i])
 	{
@@ -41,23 +43,25 @@ void	ft_pipe(char **str, int i)
 			j += (ft_strlen(str[i]) + 1);
 		i++;
 	}
-	ft_printf("%d\n", j);
+	// valeur de stockage pour la struct -> 'bi' pour à partir de qu'elle argument printf 
+	// et 'i' pour à qu'elle argument stoper et 'j' pour qu'elle lettre de l'argument 'i'
+	// - 1 ("test|" = 4), pour s'arreter quand le pipe est là.
 }
 
 void	ft_wbn(char **str, int i)
 {
-	if (isp(str, i, 0) == 0)
-	{
-		while (str[i])
+		if (isp(str, i, 0) == 0)
 		{
-			ft_printf("%s", str[i++]);
-			if (str[i])
-				ft_printf(" ");
+			while (str[i])
+			{
+				ft_printf("%s", str[i++]);
+				if (str[i])
+					ft_printf(" ");
+			}
+			ft_printf("\n");
 		}
-		ft_printf("\n");
-	}
-	else
-		ft_pipe(str, i);
+		else
+			ft_pipe(str, i);
 }
 
 void	ft_nbn(char **str, int i)
@@ -90,10 +94,15 @@ void	ma_fonction(int argc, char **str)
 			break ;
 		i++;
 	}
-	if (str[i + 1][0] == '-' && str[i + 1][1] == 'n')
-		ft_nbn(str, i + 2);
+	if (str[i + 1])
+	{
+		if (str[i + 1][0] == '-' && str[i + 1][1] == 'n')
+			ft_nbn(str, i + 2);
+		else
+			ft_wbn(str, i + 1);
+	}
 	else
-		ft_wbn(str, i + 1);
+		ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
