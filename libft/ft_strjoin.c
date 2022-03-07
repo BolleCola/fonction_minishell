@@ -6,7 +6,7 @@
 /*   By: tpaquier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 09:03:16 by tpaquier          #+#    #+#             */
-/*   Updated: 2021/10/20 09:03:18 by tpaquier         ###   ########.fr       */
+/*   Updated: 2021/10/26 09:27:14 by tpaquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -26,15 +26,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	while (s1[j])
 	{
-		mem[i] = s1[j];
-		i++;
+		mem[i++] = s1[j];
 		j++;
 	}
 	j = 0;
 	while (s2[j])
 	{
-		mem[i] = s2[j];
-		i++;
+		mem[i++] = s2[j];
 		j++;
 	}
 	mem[i] = '\0';

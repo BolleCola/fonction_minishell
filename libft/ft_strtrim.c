@@ -31,6 +31,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	c;
 
 	i = 0;
+	if (!s1 || !set)
+		return (NULL);
 	c = ft_strlen(s1);
 	while (s1[i] && ft_strtrim_count(s1[i], set) == 0)
 		i++;

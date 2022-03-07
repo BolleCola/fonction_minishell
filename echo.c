@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpaquier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/07 11:50:39 by tpaquier          #+#    #+#             */
+/*   Updated: 2022/03/07 11:50:40 by tpaquier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test.h"
 
 static int	isp(char **str, int i, int ret)
@@ -43,25 +55,27 @@ void	ft_pipe(char **str, int i)
 			j += (ft_strlen(str[i]) + 1);
 		i++;
 	}
-	// valeur de stockage pour la struct -> 'bi' pour à partir de qu'elle argument printf 
-	// et 'i' pour à qu'elle argument stoper et 'j' pour qu'elle lettre de l'argument 'i'
-	// - 1 ("test|" = 4), pour s'arreter quand le pipe est là.
+// valeur de stockage pour la struct -> 'bi' pour 
+//à partir de qu'elle argument printf 
+// et 'i' pour à qu'elle argument stoper et 
+//'j' pour qu'elle lettre de l'argument 'i'
+// - 1 ("test|" = 4), pour s'arreter quand le pipe est là.
 }
 
 void	ft_wbn(char **str, int i)
 {
-		if (isp(str, i, 0) == 0)
+	if (isp(str, i, 0) == 0)
+	{
+		while (str[i])
 		{
-			while (str[i])
-			{
-				ft_printf("%s", str[i++]);
-				if (str[i])
-					ft_printf(" ");
-			}
-			ft_printf("\n");
+			ft_printf("%s", str[i++]);
+			if (str[i])
+				ft_printf(" ");
 		}
-		else
-			ft_pipe(str, i);
+		ft_printf("\n");
+	}
+	else
+		ft_pipe(str, i);
 }
 
 void	ft_nbn(char **str, int i)

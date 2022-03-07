@@ -6,7 +6,7 @@
 /*   By: tpaquier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 09:02:31 by tpaquier          #+#    #+#             */
-/*   Updated: 2021/10/20 09:02:33 by tpaquier         ###   ########.fr       */
+/*   Updated: 2021/10/26 09:25:17 by tpaquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -82,6 +82,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (NULL);
 	mem = (char **)malloc(sizeof(char *) * (ft_split_count(s, c) + 1));
 	if (mem == NULL)
 		return (NULL);

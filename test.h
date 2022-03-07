@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpaquier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/07 11:50:55 by tpaquier          #+#    #+#             */
+/*   Updated: 2022/03/07 11:50:57 by tpaquier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TEST_H
 # define TEST_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "./libft/libft.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include "./libft/libft.h"
 
 #endif
