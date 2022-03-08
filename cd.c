@@ -25,7 +25,13 @@ void	ma_fonction(int argc, char **str, char **env)
 		i++;
 	}
 	i++;
-	chdir(str[i]);
+	if (chdir(str[i]) == -1)
+	{
+		ft_printf("cd: ");
+		perror(str[i]);
+	}
+	else
+		chdir(str[i]);
 	path = ft_strdup("");
 	ft_printf("%s\n", getcwd(path, 100));
 	free(path);
