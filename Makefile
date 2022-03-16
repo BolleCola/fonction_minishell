@@ -1,6 +1,6 @@
 NAME = test.a
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -lreadline -lncurses
 
 ARFLAGS = -crs
 
@@ -8,7 +8,7 @@ CC = gcc
 
 RM = rm -f
 
-PNTC = cd.c
+PNTC = exit.c
 
 Green = \033[0;32m
 
