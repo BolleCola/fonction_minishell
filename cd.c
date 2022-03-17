@@ -12,26 +12,27 @@
 
 #include "test.h"
 
-void	ma_fonction(int argc, char **str, char **env)
+void	ft_cd(t_shell *shell)
 {
 	char	*path;
 	int		i;
 
 	i = 0;
-	while (str[i])
+	while (shell->cmd->args[i])
 	{
-		if (str[i][0] == 'c' && str[i][1] == 'd' && str[i][2] == '\0')
+		if (shell->cmd->args[i][0] == 'c' && shell->cmd->args[i][1] == 'd' &&
+			 shell->cmd->args[i][2] == '\0')
 			break ;
 		i++;
 	}
 	i++;
-	if (chdir(str[i]) == -1)
+	if (chdir(shell->cmd->args[i]) == -1)
 	{
 		ft_printf("cd: ");
-		perror(str[i]);
+		perror(shell->cmd->args[i]);
 	}
 	else
-		chdir(str[i]);
+		chdir(shell->cmd->args[i]);
 	path = ft_strdup("");
 	ft_printf("%s\n", getcwd(path, 100));
 	free(path);
@@ -39,7 +40,8 @@ void	ma_fonction(int argc, char **str, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	ma_fonction(argc, argv, env);
+	t_shell *shell;
+	ma_fonction(shell);
 	return (0);
 }
 

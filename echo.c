@@ -35,7 +35,7 @@ static int	isp(char **str, int i, int ret)
 	return (0);
 }
 
-void	ft_pipe(char **str, int i)
+void	ft_pipe(t_shell *shell, int i)
 {
 	int	j;
 	int	pi;
@@ -43,16 +43,16 @@ void	ft_pipe(char **str, int i)
 
 	j = 0;
 	bi = i;
-	pi = isp(str, i, 0);
-	while (str[i])
+	pi = isp(shell->cmd->args, i, 0);
+	while (shell->cmd->args[i])
 	{
 		if (i == pi)
 		{
-			j += isp(str, i, 1);
+			j += isp(shell->cmd->args, i, 1);
 			break ;
 		}
 		else
-			j += (ft_strlen(str[i]) + 1);
+			j += (ft_strlen(shell->cmd->args[i]) + 1);
 		i++;
 	}
 // valeur de stockage pour la struct -> 'bi' pour 
@@ -62,38 +62,38 @@ void	ft_pipe(char **str, int i)
 // - 1 ("test|" = 4), pour s'arreter quand le pipe est là.
 }
 
-void	ft_wbn(char **str, int i)
+void	ft_wbn(t_shell *shell, int i)
 {
-	if (isp(str, i, 0) == 0)
+	if (isp(shell->cmd->args, i, 0) == 0)
 	{
-		while (str[i])
+		while (shell->cmd->args[i])
 		{
-			ft_printf("%s", str[i++]);
-			if (str[i])
+			ft_printf("%s", shell->cmd->args[i++]);
+			if (shell->cmd->args[i])
 				ft_printf(" ");
 		}
 		ft_printf("\n");
 	}
 	else
-		ft_pipe(str, i);
+		ft_pipe(shell, i);
 }
 
-void	ft_nbn(char **str, int i)
+void	ft_nbn(t_shell *shell, int i)
 {
-	if (isp(str, i, 0) == 0)
+	if (isp(shell->cmd->args, i, 0) == 0)
 	{
-		while (str[i])
+		while (shell->cmd->args[i])
 		{
-			ft_printf("%s", str[i++]);
-			if (str[i] != NULL)
+			ft_printf("%s", shell->cmd->args[i++]);
+			if (shell->cmd->args[i] != NULL)
 				ft_printf(" ");
 		}
 	}
 	else
-		ft_pipe(str, i);
+		ft_pipe(shell, i);
 }
 
-void	ma_fonction(int argc, char **str)
+void	ft_echo(t_shell *shell)
 {
 	int		i;
 	int		j;
@@ -101,19 +101,20 @@ void	ma_fonction(int argc, char **str)
 
 	i = 1;
 	echo = "echo";
-	while (str[i])
+	while (shell->cmd->args[i])
 	{
-		if (str[i][0] == echo[0] && str[i][1] == echo[1] && str[i][2]
-			== echo[2] && str[i][3] == echo[3] && str[i][4] == echo[4])
+		if (shell->cmd->args[i][0] == echo[0] && shell->cmd->args[i][1] == 
+			echo[1] && shell->cmd->args[i][2] == echo[2] && shell->cmd->
+			args[i][3] == echo[3] && shell->cmd->args[i][4] == echo[4])
 			break ;
 		i++;
 	}
-	if (str[i + 1])
+	if (shell->cmd->args[i + 1])
 	{
-		if (str[i + 1][0] == '-' && str[i + 1][1] == 'n')
-			ft_nbn(str, i + 2);
+		if (shell->cmd->args[i + 1][0] == '-' && shell->cmd->args[i + 1][1] == 'n')
+			ft_nbn(shell, i + 2);
 		else
-			ft_wbn(str, i + 1);
+			ft_wbn(shell, i + 1);
 	}
 	else
 		ft_printf("\n");
@@ -121,7 +122,8 @@ void	ma_fonction(int argc, char **str)
 
 int	main(int argc, char **argv)
 {
+	t_shell *shell;
 	if (argc >= 2)
-		ma_fonction(argc, argv);
+		ma_fonction(shell);
 	return (0);
 }

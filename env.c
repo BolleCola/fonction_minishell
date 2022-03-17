@@ -19,7 +19,7 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i])
+	while (envp[i]) 
 	{
 		test = envp[i];
 		if (envp[i + 1])
